@@ -66,6 +66,12 @@ class BlogService {
         }
     }
 
+    /**
+     * Response during database downtimes
+     * 
+     * @throws \Illuminate\Http\Exceptions\HttpResponseException
+     * @return never
+     */
     function databaseException() {
         throw new HttpResponseException(
             response()->json([

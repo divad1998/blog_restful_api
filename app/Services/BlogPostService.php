@@ -42,7 +42,6 @@ class BlogPostService {
         try {
             $blogPost = $this->blogPost->with("likes", "comments")->find($id);
             if ($blogPost == null) {
-                echo "bla";
                 $this->invalidException();
             }
             return $blogPost;
@@ -85,7 +84,7 @@ class BlogPostService {
                     ], 400)); 
             }
 
-            //save like
+            //save Like
             Like::create([
                 "blog_post_id" => $blogPost->id,
                 "user_id" => $user->id
@@ -95,6 +94,13 @@ class BlogPostService {
         }
     }
 
+    /**
+     * Response during database downtimes
+     * 
+     * @param mixed $e
+     * @throws \Illuminate\Http\Exceptions\HttpResponseException
+     * @return never
+     */
     function databaseException($e) {
         Log::error($e->getMessage());
         throw new HttpResponseException(
