@@ -11,7 +11,7 @@ Route::prefix('/v1')->group(function() {
     Route::put('/blogs/{id}', [BlogController::class, 'update']);
     Route::delete('/blogs/{id}', [BlogController::class, 'deleteById']);
 
-    //posts endpoints
+    //blog posts endpoints
     Route::post('/blog_posts/{blog_id}', [BlogPostController::class, 'create']);
     Route::get('/blog_posts/{blog_id}', [BlogPostController::class, 'getAllByBlogId']);
     Route::get('/blog/posts/{id}', [BlogPostController::class, 'getById']);
