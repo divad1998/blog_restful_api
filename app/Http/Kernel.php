@@ -14,6 +14,6 @@ class Kernel extends HttpKernel
     ];
 
     protected $routeMiddleware = [
-        'token' => \App\Http\Middleware\TokenMiddleware::class
+        'token' => TokenMiddleware::class
     ];
 }

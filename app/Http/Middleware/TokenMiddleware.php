@@ -16,7 +16,6 @@ class TokenMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        echo "hmm";
         //check for authorization
         $authHeader = $request->header('Authorization');
         $actualValue = str_replace('Bearer ', "", $authHeader);

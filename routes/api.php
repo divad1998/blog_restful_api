@@ -4,7 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogPostController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/v1')->group(function() {
+Route::prefix('/v1')->middleware(['token'])->group(function() {
     Route::post('/blogs', [BlogController::class, 'create']);
     Route::get('/blogs', [BlogController::class, 'getAll']);
     Route::get('/blogs/{id}', [BlogController::class, 'getById']);
