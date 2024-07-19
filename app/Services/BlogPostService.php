@@ -20,8 +20,9 @@ class BlogPostService {
         try {
             $blog = $this->blogService->validateBlog($blog_id);
             $this->blogPost->create(
-                ["content" => $blog_post["content"],
-                "blog_id" => $blog->id
+                [
+                    "content" => $blog_post["content"],
+                    "blog_id" => $blog->id
                 ]
             );
         } catch(PDOException $e) {

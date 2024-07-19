@@ -13,7 +13,7 @@ class Kernel extends HttpKernel
         ]
     ];
 
-    protected $routeMiddleware = [
-        'token' => TokenMiddleware::class
-    ];
+    // protected $routeMiddleware = [
+    //     'token' => TokenMiddleware::class
+    // ];
 }

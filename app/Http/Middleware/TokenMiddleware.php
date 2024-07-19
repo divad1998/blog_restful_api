@@ -17,14 +17,14 @@ class TokenMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         //check for authorization
-        $authHeader = $request->header('Authorization');
-        $actualValue = str_replace('Bearer ', "", $authHeader);
+        $authHeaderValue = $request->header('Authorization');
+        $actualValue = str_replace('Bearer ', "", $authHeaderValue);
         if ($actualValue != 'vg@123') {
             throw new HttpResponseException(
                 response()->json([
                     'status' => false,
                     'message' => 'Unauthorized.'
-                ]));
+                ], 401));
         }
 
         return $next($request);
