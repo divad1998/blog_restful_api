@@ -12,10 +12,10 @@ class Like extends Model
     protected $fillable = ['blog_post_id', 'user_id'];
 
     function blogPost() {
-        $this->belongsTo(BlogPost::class);
+        return $this->belongsTo(BlogPost::class);
     }
 
     function user() {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }
