@@ -23,7 +23,7 @@ class TokenMiddleware
             throw new HttpResponseException(
                 response()->json([
                     'status' => false,
-                    'message' => 'Unauthorized.'
+                    'message' => 'Unauthorized. Missing \'Authorization\' header.'
                 ], 401));
         }
 
