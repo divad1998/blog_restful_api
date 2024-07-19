@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Models\Blog;
 use App\Models\BlogPost;
+use App\Models\BlogPostComment;
 use App\Models\Like;
 use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -90,6 +91,32 @@ class BlogPostService {
                 "blog_post_id" => $blogPost->id,
                 "user_id" => $user->id
             ]);
+        } catch (PDOException $e) {
+            $this->databaseException($e);
+        }
+    }
+
+    function comment($id, $user_id, $comment) {
+        try {
+            $blogPost = $this->validateBlogPost($id);
+            //validate user
+            $user = User::find($user_id);
+            if($user == null) {
+                throw new HttpResponseException(
+                    response()->json([
+                        'status' => false,
+                        'message' => 'Invalid User.'
+                    ], 400)); 
+            }
+
+            //save Like
+            $comment = BlogPostComment::create([
+                            "content" => $comment["content"],
+                            "blog_post_id" => $blogPost->id,
+                            "user_id" => $user->id
+                        ]);
+            
+            return $comment;
         } catch (PDOException $e) {
             $this->databaseException($e);
         }
