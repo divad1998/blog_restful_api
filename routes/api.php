@@ -20,5 +20,5 @@ Route::middleware(["token"])->controller(BlogPostController::class)->group(funct
     Route::put('/blogs/posts/{id}', 'update');
     Route::delete('/blogs/posts/{id}', 'deleteById');
     Route::post('/blogs/posts/{post_id}/{user_id}/likes', 'like');
-    Route::post('/blogs/posts/{id}/{user_id}/comments', 'comment');
+    Route::post('/blogs/posts/{post_id}/{user_id}/comments', 'comment');
 });
